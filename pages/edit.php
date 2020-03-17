@@ -95,7 +95,10 @@ while ($row = $status->fetch_assoc()) {
             <textarea name="comment" class="field-style" placeholder="Comment"><?php echo $data["comment"]?></textarea>
         </li>
         <li>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save" class="align-left" />
+            <?php if(isset($_GET["id"])) {?>
+                <input type="submit" value="Delete" class="align-right" formaction="../actions/delete.php">
+            <?php } ?>
         </li>
     </ul>
 </form>
