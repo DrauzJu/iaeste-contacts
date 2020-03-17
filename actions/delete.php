@@ -7,6 +7,10 @@ if(!is_logged_in()) {
     exit();
 }
 
+if(!check_csrf_token($_POST["csrf"])) {
+    die("Invalid CSRF Token");
+}
+
 $db = getDB();
 $stmt = $db->prepare("DELETE FROM student WHERE id=?");
 $stmt->bind_param("i", $_POST["id"]);

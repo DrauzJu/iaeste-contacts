@@ -14,4 +14,8 @@ function is_logged_in() {
     return false;
 }
 
+function check_csrf_token($given_token) {
+    return $given_token === $_SESSION['csrf_token'];
+}
+
 ?>

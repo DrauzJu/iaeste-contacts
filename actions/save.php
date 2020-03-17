@@ -7,6 +7,10 @@ if(!is_logged_in()) {
     exit();
 }
 
+if(!check_csrf_token($_POST["csrf"])) {
+    die("Invalid CSRF Token");
+}
+
 $db = getDB();
 
 if($_POST["mode"] == "update") {

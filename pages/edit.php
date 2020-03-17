@@ -44,6 +44,7 @@ global $IAESTE_LOGO;
 <br>
 
 <form class="editForm" action="../actions/save.php" method="post">
+    <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrf_token'];?>"/>
     <input type="hidden" name="id" value="<?php echo $data["id"]?>"/>
     <input type="hidden" name="mode" value="<?php if(isset($_GET["id"])) {
             echo "update";

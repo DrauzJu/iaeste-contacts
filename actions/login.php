@@ -8,6 +8,7 @@ if(isset($_POST["user"]) && $_POST["user"] == $IAESTE_USER &&
         session_set_cookie_params(300, "/", $IAESTE_DOMAIN, isset($_SERVER["HTTPS"]), TRUE);
         session_start();
         $_SESSION['loggedIn'] = "True";
+        $_SESSION['csrf_token'] = uniqid('', true);
 
         header("Location: ../pages/overview.php");
         exit();
