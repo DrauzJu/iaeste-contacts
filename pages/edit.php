@@ -98,8 +98,9 @@ while ($row = $status->fetch_assoc()) {
         <li>
             <input type="submit" value="Save" class="align-left" />
             <?php if(isset($_GET["id"])) {?>
-                <input type="submit" value="Delete" class="align-right" formaction="../actions/delete.php">
+                <input type="submit" style="margin-left: 5px" value="Delete" formaction="../actions/delete.php">
             <?php } ?>
+            <input type="submit" onclick="window.location='overview.php'; return false;" value="Cancel" class="align-right" />
         </li>
     </ul>
 </form>
