@@ -20,6 +20,7 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
     1. Database connection
     2. Domain
     3. Login-User and password
+    4. Custom logo
 4. Setup the DB
    ```mysql
    CREATE TABLE `epstatus` (
