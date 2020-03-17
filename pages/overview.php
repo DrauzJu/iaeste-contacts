@@ -11,7 +11,7 @@ if(!is_logged_in()) {
 
 print_head(array("../css/main.css", "../css/overview.css"));
 $db = getDB();
-$data = $db->query("SELECT * FROM student_status ORDER BY outYear DESC");
+$data = $db->query("SELECT * FROM student_status ORDER BY outYear DESC, status, name ");
 if ($data == FALSE) {
     die("Error occured during data fetch from DB");
 }
