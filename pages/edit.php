@@ -2,6 +2,7 @@
 require_once "../include/db.php";
 require_once "../include/session.php";
 require_once "../include/html.php";
+require_once "../include/config.php";
 
 if(!is_logged_in()) {
     header("Location: ../index.php");
@@ -32,10 +33,12 @@ if(isset($_GET["id"])) {
 
 $epstatus = $db->query("SELECT * FROM epstatus");
 $status = $db->query("SELECT * FROM status");
+
+global $IAESTE_LOGO;
 ?>
 
 <body>
-<img class="logo" src="https://www.iaeste-darmstadt.de/new/wp-content/uploads/2019/02/Logo.jpg"/>
+<img class="logo" src="<?php echo $IAESTE_LOGO; ?>"/>
 
 <h1>Edit/New</h1>
 <br>
