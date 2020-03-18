@@ -24,7 +24,6 @@ global $IAESTE_LOGO;
 
 <h1>Overview</h1>
 <br>
-<a href="edit.php">Create new</a>
 
 <table class="blueTable">
     <thead>
@@ -62,6 +61,21 @@ while ($row = $data->fetch_assoc()) {
 
     </tbody>
 </table>
+
+<div class="menu">
+    <div class="entry borderRight">
+        <a href="edit.php">New student</a>
+    </div>
+
+    <div class="entry borderRight borderLeft">
+        <a href="https://www.iaeste.de" target="_blank">IAESTE NC Germany</a>
+    </div>
+
+    <div class="entry borderLeft" style="">
+        <a href="../actions/logout.php">Logout</a>
+    </div>
+</div>
+
 </body>
 
 <?php
