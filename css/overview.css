@@ -38,6 +38,9 @@ table.blueTable {
     text-align: left;
     border-collapse: collapse;
     margin-top: 20px;
+    display: block;
+    height: 70%;
+    overflow-y: scroll;
 }
 
 table.blueTable td, table.blueTable th {
