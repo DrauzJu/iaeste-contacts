@@ -19,8 +19,7 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
 3. Edit the file `include/config.php` and set the values for 
     1. Database connection
     2. Domain
-    3. Login-User and password
-    4. Custom logo
+    3. Custom logo
 4. Setup the DB
    ```mysql
    CREATE TABLE `epstatus` (
@@ -47,6 +46,14 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
      PRIMARY KEY (`id`)
    );
    
+   CREATE TABLE `user` (
+     `id` int(11) NOT NULL AUTO_INCREMENT,
+     `name` varchar(100) NOT NULL,
+     `password` char(60) NOT NULL,
+     `admin` smallint(6) NOT NULL,
+     PRIMARY KEY (`id`)
+   );
+   
    CREATE VIEW `student_status` AS SELECT 
        `student`.`id` AS `id`,
        `student`.`name` AS `name`,
@@ -65,3 +72,13 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
     INSERT INTO `epstatus` VALUES (1,'Pending verification'),(2,'Approved'),(0,'None');
     INSERT INTO `status` VALUES (1,'Unknown'),(2,'EP Account created'),(3,'Contacted by LC via mail'),(4,'Student contacted LC (no EP Account)'),(5,'Student contacted LC'),(6,'Looking for internship'),(7,'Internship found'),(8,'Back from internship'),(9,'Doing internship'),(10,'Not interested anymore');
     ```
+
+## User management
+During the setup process, a admin user is created:
+```text
+User: admin
+Password: iaeste
+```
+
+After setup, you should login with this user and change the password by navigating to Settings -> User.
+You can also create new (non-admin) users there. 

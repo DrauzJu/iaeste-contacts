@@ -9,7 +9,7 @@ if(!is_logged_in()) {
     exit();
 }
 
-print_head(array("../css/main.css", "../css/overview.css"));
+print_head(array("../css/main.css", "../css/table.css", "../css/menu.css"));
 $db = getDB();
 $data = $db->query("SELECT * FROM student_status ORDER BY outYear DESC, status, name ");
 if ($data == FALSE) {
@@ -25,7 +25,7 @@ global $IAESTE_LOGO;
 <h1>Overview</h1>
 <br>
 
-<table class="blueTable">
+<table class="blueTable" style="margin-bottom: 8vh;">
     <thead>
         <tr>
             <th>Name</th>
@@ -63,15 +63,19 @@ while ($row = $data->fetch_assoc()) {
 </table>
 
 <div class="menu">
-    <div class="entry borderRight">
+    <div>
         <a href="edit.php">New student</a>
     </div>
 
-    <div class="entry borderRight borderLeft">
-        <a href="https://www.iaeste.de" target="_blank">IAESTE NC Germany</a>
+    <div>
+        <a href="application.php">Application</a>
     </div>
 
-    <div class="entry borderLeft" style="">
+    <div>
+        <a href="settings.php?tab=General">Settings</a>
+    </div>
+
+    <div>
         <a href="../actions/logout.php">Logout</a>
     </div>
 </div>

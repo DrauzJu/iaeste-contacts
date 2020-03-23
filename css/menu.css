@@ -1,0 +1,36 @@
+div.menu {
+    width: 100%;
+    height: 8vh;
+    /* position: sticky */
+    position: fixed;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    margin-top: 5px;
+    background: #1B75BB;
+}
+
+div.menu div {
+    width: 25vw;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.menu div a {
+    color: #FFFFFF;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+
+div.menu div a:hover {
+    color: #1B75BB;
+    background: white;
+    border-top: 2px solid #1B75BB;
+}
