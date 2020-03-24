@@ -18,8 +18,7 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
    ```
 3. Edit the file `include/config.php` and set the values for 
     1. Database connection
-    2. Domain
-    3. Custom logo
+    2. Custom logo
 4. Setup the DB: visit https://yourdomain/setup.php to automatically setup the configured database
 
 ## User management
