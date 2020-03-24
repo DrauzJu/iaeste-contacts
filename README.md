@@ -20,7 +20,7 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
     1. Database connection
     2. Domain
     3. Custom logo
-4. Setup the DB: visit https://yourdomain/pages/setup.php to automatically setup the configured database
+4. Setup the DB: visit https://yourdomain/setup.php to automatically setup the configured database
 
 ## User management
 During the setup process, a admin user is created:
