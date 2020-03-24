@@ -25,11 +25,9 @@ foreach($_POST as $key => $value) {
         $stmt->bind_param("si", password_hash($value, PASSWORD_BCRYPT), $user_id);
         $stmt->execute();
 
-        if(empty($db->error)) {
-            header("Location: ../pages/settings.php?tab=User");
-            exit();
-        } else {
+        if(!empty($db->error)) {
             echo "Error occured!";
+            exit();
         }
     }
 }
@@ -41,10 +39,10 @@ if (!empty($_POST["newUser"]) && !empty($_POST["newPw"])) {
     $stmt->bind_param("ssi", $_POST["newUser"], password_hash($_POST["newPw"], PASSWORD_BCRYPT), $admin_false);
     $stmt->execute();
 
-    if(empty($db->error)) {
-        header("Location: ../pages/settings.php?tab=User");
-        exit();
-    } else {
+    if(!empty($db->error)) {
         echo "Error occured!";
+        exit();
     }
 }
+
+header("Location: ../pages/settings.php?tab=User");
