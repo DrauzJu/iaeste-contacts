@@ -1,15 +1,11 @@
 <?php
 require_once "include/html.php";
 require_once "include/db.php";
-require_once "include/config.php";
 
 print_head(array("css/main.css", "css/editForm.css"));
-global $IAESTE_LOGO;
 ?>
 
-<body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<img class="logo" src="<?php echo $IAESTE_LOGO; ?>"/>
 
 <h1>Setup</h1>
 <br>
@@ -34,8 +30,6 @@ Additionally, a default user is created.
 
 <ul style="list-style-type: none" id="list">
 </ul>
-
-</body>
 
 <?php
 if(isset($_GET['Confirmed'])) {

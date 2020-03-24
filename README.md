@@ -16,9 +16,8 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
    ```bash
    rm -rf .git
    ```
-3. Edit the file `include/config.php` and set the values for 
-    1. Database connection
-    2. Custom logo
+3. Edit the file `include/config.php` and set the values for your Database connection. Please ensure
+the given user has all rights for the given database!
 4. Setup the DB: visit https://yourdomain/setup.php to automatically setup the configured database
 
 ## User management

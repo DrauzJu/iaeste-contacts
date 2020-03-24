@@ -12,6 +12,11 @@ function getDB() {
     return $mysqli;
 }
 
+function getOption($db, $option) {
+    $option = $db->query("SELECT value FROM settings WHERE `key` = '".$option."'")->fetch_assoc();
+    return $option["value"];
+}
+
 function setupDatabase($insertData) {
     $db = getDB();
     updateSetupScreen("Connected to DB");
@@ -51,6 +56,14 @@ function setupDatabase($insertData) {
       `admin` smallint(6) NOT NULL,
       PRIMARY KEY (`id`));"
     );
+
+    executeSetupQuery($db, "CREATE TABLE IF NOT EXISTS `settings` (
+      `key` varchar(20) NOT NULL,
+      `value` text NOT NULL,
+      PRIMARY KEY (`key`));"
+    );
+
+    executeSetupQuery($db, "INSERT IGNORE INTO settings VALUES ('logo', 'https://www.iaeste.de/files/2019/04/iaeste-logo.png')");
 
     updateSetupScreen("Created tables");
 

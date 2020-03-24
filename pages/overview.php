@@ -2,7 +2,6 @@
 require_once "../include/session.php";
 require_once "../include/html.php";
 require_once "../include/db.php";
-require_once "../include/config.php";
 
 if(!is_logged_in()) {
     header("Location: ../index.php");
@@ -15,12 +14,7 @@ $data = $db->query("SELECT * FROM student_status ORDER BY outYear DESC, status, 
 if ($data == FALSE) {
     die("Error occured during data fetch from DB");
 }
-
-global $IAESTE_LOGO;
 ?>
-
-<body>
-<img class="logo" src="<?php echo $IAESTE_LOGO; ?>"/>
 
 <h1>Overview</h1>
 <br>
@@ -79,8 +73,6 @@ while ($row = $data->fetch_assoc()) {
         <a href="../actions/logout.php">Logout</a>
     </div>
 </div>
-
-</body>
 
 <?php
 print_tail();
