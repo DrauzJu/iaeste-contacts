@@ -10,7 +10,7 @@ if(!is_logged_in()) {
 
 $settings_tab = $_GET["tab"];
 
-print_head(array("../css/main.css", "../css/menu.css", "../css/table.css", "../css/settings.css", "../css/editForm.css"));
+print_head(array("../css/main.css", "../css/menu.css", "../css/table.css", "../css/settings.css", "../css/editForm.css"), "IAESTE CRM - Settings");
 $db = getDB();
 ?>
 

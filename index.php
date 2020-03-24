@@ -15,7 +15,7 @@ if($db) {
     $logo = "";
 }
 
-print_head(array("css/main.css", "css/login.css"));
+print_head(array("css/main.css", "css/login.css"), "IAESTE CRM - Login");
 ?>
 
 <div class="loginMain">

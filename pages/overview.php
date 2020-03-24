@@ -8,7 +8,7 @@ if(!is_logged_in()) {
     exit();
 }
 
-print_head(array("../css/main.css", "../css/table.css", "../css/menu.css"));
+print_head(array("../css/main.css", "../css/table.css", "../css/menu.css"), "IAESTE CRM - Home");
 $db = getDB();
 $data = $db->query("SELECT * FROM student_status ORDER BY outYear DESC, status, name ");
 if ($data == FALSE) {

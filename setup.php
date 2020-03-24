@@ -2,7 +2,7 @@
 require_once "include/html.php";
 require_once "include/db.php";
 
-print_head(array("css/main.css", "css/editForm.css"));
+print_head(array("css/main.css", "css/editForm.css"), "IAESTE CRM - Setup");
 ?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

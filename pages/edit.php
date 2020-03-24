@@ -8,7 +8,7 @@ if(!is_logged_in()) {
     exit();
 }
 
-print_head(array("../css/main.css", "../css/editForm.css"));
+print_head(array("../css/main.css", "../css/editForm.css"), "IAESTE CRM - Edit Student");
 $db = getDB();
 
 if(isset($_GET["id"])) {
