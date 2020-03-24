@@ -5,6 +5,19 @@ if(!isset($db)) {
     die();
 }
 
+$logo = getOption($db, "logo");
 ?>
 
-<p>Space for some general settings</p>
+<form class="editForm" action="../actions/saveSettings.php" method="post">
+    <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrf_token'];?>"/>
+    <ul>
+        <li>
+            <label class="field-split align-left" style="padding: 8px; width: auto;">Logo URL/Path</label>
+            <input type="text" name="logo" class="field-style field-split align-right"
+                   value="<?php echo $logo;?>" />
+        </li>
+        <li>
+            <input class="align-left" type="submit" value="Save">
+        </li>
+    </ul>
+</form>
