@@ -13,8 +13,12 @@ function getDB() {
 }
 
 function getOption($db, $option) {
-    $option = $db->query("SELECT value FROM settings WHERE `key` = '".$option."'")->fetch_assoc();
-    return $option["value"];
+    try {
+        $option = $db->query("SELECT value FROM settings WHERE `key` = '".$option."'")->fetch_assoc();
+        return $option["value"];
+    } catch (Exception | Error $e) {
+        return "";
+    }
 }
 
 function setupDatabase($insertData) {
@@ -45,6 +49,8 @@ function setupDatabase($insertData) {
       `epstatus` int(11) NOT NULL,
       `status` int(11) NOT NULL,
       `comment` text NOT NULL,
+      FOREIGN KEY (`epstatus`) REFERENCES epstatus(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+      FOREIGN KEY (`status`) REFERENCES status(id) ON DELETE RESTRICT ON UPDATE CASCADE, 
       PRIMARY KEY (`id`));"
     );
 
@@ -93,7 +99,7 @@ function setupDatabase($insertData) {
         executeSetupQuery($db, "INSERT INTO `status` VALUES (1,'Unknown'),(2,'EP Account created'),(3,'Contacted by LC via mail'),(4,'Student contacted LC (no EP Account)'),(5,'Student contacted LC'),(6,'Looking for internship'),(7,'Internship found'),(8,'Back from internship'),(9,'Doing internship'),(10,'Not interested anymore');");
 
         // Insert EP status values
-        executeSetupQuery($db, "INSERT INTO `epstatus` VALUES (1,'Pending verification'),(2,'Approved'),(0,'None');");
+        executeSetupQuery($db, "INSERT INTO `epstatus` VALUES (1,'Pending verification'),(2,'Approved'),(3,'None');");
 
         updateSetupScreen("Filled with initial data");
     }

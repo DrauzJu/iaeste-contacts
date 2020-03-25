@@ -4,7 +4,7 @@ Contact Management System for [IAESTE](https://www.iaeste.de/) LCs
 ![](https://www.iaeste.de/files/2019/04/iaeste-logo.png)
 
 ## Requirements
-1. PHP7 (including mysqli)
+1. PHP7.1 (including mysqli)
 2. MySQL Database
 
 ## Installation
