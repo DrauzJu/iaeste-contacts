@@ -14,7 +14,7 @@ print_head(array("../css/main.css", "../css/menu.css", "../css/table.css", "../c
 $db = getDB();
 ?>
 
-<h1>Settings - <?php echo $settings_tab; ?></h1>
+<h1 class="center">Settings - <?php echo $settings_tab; ?></h1>
 <br>
 
 <?php

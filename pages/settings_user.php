@@ -16,7 +16,7 @@ if ($data == FALSE) {
 
 ?>
 
-<form autocomplete="off" action="../actions/saveUser.php" method="post">
+<form class="center" autocomplete="off" action="../actions/saveUser.php" method="post">
     <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrf_token'];?>"/>
     <table class="blueTable">
         <thead>

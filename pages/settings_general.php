@@ -16,7 +16,7 @@ $logo = getOption($db, "logo");
             <input type="text" name="logo" class="field-style field-split align-right"
                    value="<?php echo $logo;?>" />
         </li>
-        <li>
+        <li class="center" style="margin-top: 30px;">
             <input class="align-left" type="submit" value="Save">
         </li>
     </ul>

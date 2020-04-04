@@ -34,7 +34,7 @@ $epstatus = $db->query("SELECT * FROM epstatus");
 $status = $db->query("SELECT * FROM status");
 ?>
 
-<h1>Edit/New</h1>
+<h1 class="center">Edit/New</h1>
 <br>
 
 <form class="editForm" action="../actions/save.php" method="post">

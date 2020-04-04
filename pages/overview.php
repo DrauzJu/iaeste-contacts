@@ -16,7 +16,7 @@ if ($data == FALSE) {
 }
 ?>
 
-<h1>Overview</h1>
+<h1 class="center">Overview</h1>
 <br>
 
 <table class="blueTable" style="margin-bottom: 8vh;">
