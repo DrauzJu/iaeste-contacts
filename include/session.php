@@ -1,7 +1,7 @@
 <?php
 function is_logged_in() {
 
-    session_set_cookie_params(300, "/", $_SERVER['HTTP_HOST'], isset($_SERVER["HTTPS"]), TRUE);
+    session_set_cookie_params(30 * 60, "/", $_SERVER['HTTP_HOST'], isset($_SERVER["HTTPS"]), TRUE);
     session_start();
 
     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == "True") {

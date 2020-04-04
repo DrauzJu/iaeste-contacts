@@ -71,6 +71,25 @@ function setupDatabase($insertData) {
 
     executeSetupQuery($db, "INSERT IGNORE INTO settings VALUES ('logo', 'https://www.iaeste.de/files/2019/04/iaeste-logo.png')");
 
+    executeSetupQuery($db, "CREATE TABLE IF NOT EXISTS `criteria` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `year` int(11) NOT NULL,
+      `name` varchar(40),
+      `weight` int(11),
+      PRIMARY KEY (`id`));"
+    );
+
+    executeSetupQuery($db, "CREATE TABLE IF NOT EXISTS `score` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `student` int(11) NOT NULL,
+      `criteriaid` int(11) NOT NULL,
+      `value` int(11),
+      `user` varchar(50),
+      FOREIGN KEY (`student`) REFERENCES student(id) ON DELETE CASCADE,
+      FOREIGN KEY (`criteriaid`) REFERENCES criteria(id) ON DELETE CASCADE,
+      PRIMARY KEY (`id`));"
+    );
+
     updateSetupScreen("Created tables");
 
     // view: student_status
