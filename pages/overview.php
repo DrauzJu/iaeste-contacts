@@ -28,6 +28,7 @@ if ($data == FALSE) {
             <th>Studies</th>
             <th>EP Status</th>
             <th>Status</th>
+            <th>Last Changed</th>
             <th>Comments</th>
         </tr>
     </thead>
@@ -47,6 +48,7 @@ while ($row = $data->fetch_assoc()) {
                 <?php echo $row['EP_Status']?>
             </td>
             <td><?php echo $row['Status']?></td>
+            <td><?php echo $row['last_update']?></td>
             <td><?php echo $row['comment']?></td>
         </tr>
 <?php
