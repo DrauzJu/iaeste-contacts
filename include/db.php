@@ -49,6 +49,7 @@ function setupDatabase($insertData) {
       `epstatus` int(11) NOT NULL,
       `status` int(11) NOT NULL,
       `last_update` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      `disabled` smallint DEFAULT 0,
       `comment` text NOT NULL,
       FOREIGN KEY (`epstatus`) REFERENCES epstatus(id) ON DELETE RESTRICT ON UPDATE CASCADE,
       FOREIGN KEY (`status`) REFERENCES status(id) ON DELETE RESTRICT ON UPDATE CASCADE, 
@@ -97,7 +98,8 @@ function setupDatabase($insertData) {
     executeSetupQuery($db, "CREATE OR REPLACE VIEW `student_status` AS SELECT 
         `student`.`id` AS `id`,`student`.`name` AS `name`,`student`.`outYear` AS `outYear`,
         `student`.`email` AS `email`,`student`.`studies` AS `studies`,`student`.`comment` AS `comment`,
-        `student`.`last_update` AS `last_update`,`epstatus`.`name` AS `EP_Status`,`status`.`name` AS `Status` 
+        `student`.`last_update` AS `last_update`,`student`.`disabled` AS `disabled`,
+        `epstatus`.`name` AS `EP_Status`,`status`.`name` AS `Status` 
         FROM `student` 
         JOIN `epstatus` on `student`.`epstatus` = `epstatus`.`id` 
         JOIN `status` on `student`.`status` = `status`.`id`;");

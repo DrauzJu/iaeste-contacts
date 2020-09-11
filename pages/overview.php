@@ -9,8 +9,11 @@ if(!is_logged_in()) {
 }
 
 print_head(array("../css/main.css", "../css/table.css", "../css/menu.css"), "IAESTE CRM - Home");
+
+$selectCondition = isset($_GET['showDisabled']) ? '' : 'WHERE disabled=0';
+
 $db = getDB();
-$data = $db->query("SELECT * FROM student_status ORDER BY outYear DESC, status, name ");
+$data = $db->query("SELECT * FROM student_status ".$selectCondition." ORDER BY outYear DESC, status, name ");
 if ($data == FALSE) {
     die("Error occured during data fetch from DB");
 }
@@ -18,6 +21,12 @@ if ($data == FALSE) {
 
 <h1 class="center">Overview</h1>
 <br>
+
+<?php if(isset($_GET['showDisabled'])) { ?>
+<a href="overview.php">Hide disabled accounts</a>
+<?php } else { ?>
+<a href="overview.php?showDisabled">Show also disabled accounts</a>
+<?php } ?>
 
 <table class="blueTable" style="margin-bottom: 8vh;">
     <thead>

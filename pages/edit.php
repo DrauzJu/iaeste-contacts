@@ -26,7 +26,8 @@ if(isset($_GET["id"])) {
         "studies"=>"",
         "comment"=>"",
         "epstatus"=>"",
-        "status"=>""
+        "status"=>"",
+        "disabled"=>0
     );
 }
 
@@ -88,6 +89,11 @@ while ($row = $status->fetch_assoc()) {
         </li>
         <li>
             <textarea name="comment" class="field-style" placeholder="Comment"><?php echo $data["comment"]?></textarea>
+        </li>
+        <li>
+            <label class="field-split align-left">Disabled</label>
+            <input type="checkbox" name="disabled" class="align-right" 
+                <?php if($data["disabled"] == 1) echo "checked"; ?> />
         </li>
         <li>
             <input type="submit" value="Save" class="align-left" />
