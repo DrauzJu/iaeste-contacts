@@ -22,7 +22,10 @@ if(isset($_POST["user"]) && isset($_POST["pw"])) {
 
     if(password_verify($_POST["pw"], $result_pw)) {
         // init session
-        session_set_cookie_params(30 * 60, "/", $_SERVER['HTTP_HOST'], isset($_SERVER["HTTPS"]), TRUE);
+        $domain = strpos($_SERVER['HTTP_HOST'], ':') ? 
+            strtok($_SERVER['HTTP_HOST'], ':') : 
+            $_SERVER['HTTP_HOST'];
+        session_set_cookie_params(30 * 60, "/", $domain, isset($_SERVER["HTTPS"]), TRUE);
         session_start();
         $_SESSION['loggedIn'] = "True";
         $_SESSION['csrf_token'] = uniqid('', true);
