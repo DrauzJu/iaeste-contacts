@@ -27,7 +27,7 @@ if ($data == FALSE) {
     <label for="checkDisabledAccounts">Show also disabled accounts</label>
 </div>
 
-<table id="data_table" class="stripe hover cell-border" style="width:100%">
+<table id="data_table" class="stripe hover cell-border" style="width:100%; margin-bottom: 10vh;">
     <thead>
         <tr>
             <th>Name</th>
@@ -88,7 +88,8 @@ while ($row = $data->fetch_assoc()) {
     $(document).ready(function () {
         $('#data_table').DataTable({
             paging: false,
-            info: false
+            info: false,
+            order: [[ 1, "desc" ], [ 5, "asc" ], [ 0, "asc" ]]
         });
     });
 
