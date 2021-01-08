@@ -98,10 +98,10 @@ function getData() {
         <?php
     }
     ?>
-    </select
+    </select>
 
     <label class="field-style">Examiner:
-        <input class="field-style" type="text" name="user" value="<?php echo $_GET['user']; ?>">
+        <input class="field-style" type="text" name="user" value="<?php if(isset($_GET["user"])) echo $_GET['user']; ?>">
     </label>
 
     <input class="field-style" type="submit" value="Go">
