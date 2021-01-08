@@ -8,7 +8,7 @@ if(!is_logged_in()) {
     exit();
 }
 
-print_head(array("../css/main.css", "../css/table.css", "../css/menu.css"), "IAESTE CRM - Home");
+print_head(array("../css/main.css", "../css/menu.css"), "IAESTE CRM - Home", "data_table");
 
 $selectCondition = isset($_GET['showDisabled']) ? '' : 'WHERE disabled=0';
 
@@ -22,13 +22,12 @@ if ($data == FALSE) {
 <h1 class="center">Overview</h1>
 <br>
 
-<?php if(isset($_GET['showDisabled'])) { ?>
-<a href="overview.php">Hide disabled accounts</a>
-<?php } else { ?>
-<a href="overview.php?showDisabled">Show also disabled accounts</a>
-<?php } ?>
+<div style="margin-bottom: 30px;">
+    <input type="checkbox" id="checkDisabledAccounts" name="scales" onclick="change_show_disabled_accounts(this)" <?php if(isset($_GET['showDisabled'])) { ?> checked <?php } ?>>
+    <label for="checkDisabledAccounts">Show also disabled accounts</label>
+</div>
 
-<table class="blueTable" style="margin-bottom: 8vh;">
+<table id="data_table" class="stripe hover cell-border" style="width:100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -50,14 +49,14 @@ while ($row = $data->fetch_assoc()) {
             <td>
                 <a href="edit.php?id=<?php echo $row['id']?>"><?php echo $row['name']?></a>
             </td>
-            <td><?php echo $row['outYear']?></td>
-            <td><?php echo $row['email']?></td>
-            <td><?php echo $row['studies']?></td>
-            <td <?php if($row['EP_Status'] == "None") echo "style=\"color: red;\"" ?>>
+            <td class="dt-center" ><?php echo $row['outYear']?></td>
+            <td class="dt-center" ><?php echo $row['email']?></td>
+            <td class="dt-center" ><?php echo $row['studies']?></td>
+            <td class="dt-center" <?php if($row['EP_Status'] == "None") echo "style=\"color: red;\"" ?>>
                 <?php echo $row['EP_Status']?>
             </td>
-            <td><?php echo $row['Status']?></td>
-            <td><?php echo $row['last_update']?></td>
+            <td class="dt-center" ><?php echo $row['Status']?></td>
+            <td class="dt-center" ><?php echo $row['last_update']?></td>
             <td><?php echo $row['comment']?></td>
         </tr>
 <?php
@@ -84,6 +83,23 @@ while ($row = $data->fetch_assoc()) {
         <a href="../actions/logout.php">Logout</a>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#data_table').DataTable({
+            paging: false,
+            info: false
+        });
+    });
+
+    function change_show_disabled_accounts(elem) {
+        if ($(elem).is(":checked")) {
+            window.location.href = "overview.php?showDisabled";
+        } else {
+            window.location.href = "overview.php";
+        }
+    }
+</script>
 
 <?php
 print_tail();
