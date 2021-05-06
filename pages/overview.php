@@ -47,17 +47,17 @@ while ($row = $data->fetch_assoc()) {
 ?>
         <tr>
             <td>
-                <a href="edit.php?id=<?php echo $row['id']?>"><?php echo $row['name']?></a>
+                <a href="edit.php?id=<?php echo htmlspecialchars($row['id'])?>"><?php echo htmlspecialchars($row['name'])?></a>
             </td>
-            <td class="dt-center" ><?php echo $row['outYear']?></td>
-            <td class="dt-center" ><?php echo $row['email']?></td>
-            <td class="dt-center" ><?php echo $row['studies']?></td>
+            <td class="dt-center" ><?php echo htmlspecialchars($row['outYear'])?></td>
+            <td class="dt-center" ><?php echo htmlspecialchars($row['email'])?></td>
+            <td class="dt-center" ><?php echo htmlspecialchars($row['studies'])?></td>
             <td class="dt-center" <?php if($row['EP_Status'] == "None") echo "style=\"color: red;\"" ?>>
-                <?php echo $row['EP_Status']?>
+                <?php echo htmlspecialchars($row['EP_Status'])?>
             </td>
-            <td class="dt-center" ><?php echo $row['Status']?></td>
+            <td class="dt-center" ><?php echo htmlspecialchars($row['Status'])?></td>
             <td class="dt-center" ><?php echo $row['last_update']?></td>
-            <td><?php echo $row['comment']?></td>
+            <td><?php echo htmlspecialchars($row['comment'])?></td>
         </tr>
 <?php
 }
@@ -84,23 +84,7 @@ while ($row = $data->fetch_assoc()) {
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('#data_table').DataTable({
-            paging: false,
-            info: false,
-            order: [[ 1, "desc" ], [ 5, "asc" ], [ 0, "asc" ]]
-        });
-    });
-
-    function change_show_disabled_accounts(elem) {
-        if ($(elem).is(":checked")) {
-            window.location.href = "overview.php?showDisabled";
-        } else {
-            window.location.href = "overview.php";
-        }
-    }
-</script>
+<script src="../js/overview.js"></script>
 
 <?php
 print_tail();

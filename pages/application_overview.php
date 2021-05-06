@@ -12,7 +12,7 @@ print_head(array("../css/main.css", "../css/table.css", "../css/menu.css", "../c
     "IAESTE CRM - Application Overview");
 $db = getDB();
 $currentYear = (int) date("Y");
-$_GET["year"] = $_GET["year"] ?: $currentYear;
+$_GET["year"] = isset($_GET["year"]) ? $_GET["year"] : $currentYear;
 
 $stmt = $db->prepare("SELECT student.name, AVG(perUserScore) as result FROM (
     SELECT score.student, SUM(value * weight)/100 as perUserScore
@@ -40,7 +40,7 @@ $res = $stmt->get_result();
 
 <form  class="center paramForm" method="get" action="application_overview.php">
     <label class="field-style" style="margin-right: 0;">Year:
-        <select class="field-style" name="year" onchange="this.form.submit()">
+        <select id="year-select" class="field-style" name="year">
             <?php
             for($i=-2; $i<3; $i++) {
                 ?>
@@ -69,8 +69,8 @@ if(isset($res)) {
     while($data = $res->fetch_assoc()) {
 ?>
         <tr>
-            <td><?php echo $data['name']?></td>
-            <td><?php echo $data['result']?></td>
+            <td><?php echo htmlspecialchars($data['name'])?></td>
+            <td><?php echo htmlspecialchars($data['result'])?></td>
         </tr>
 <?php
     }
@@ -87,6 +87,9 @@ if(isset($res)) {
         <a href="application.php">Back</a>
     </div>
 </div>
+
+<script src="../js/jquery.slim.js"></script>
+<script src="../js/application.js"></script>
 
 <?php
 print_tail();

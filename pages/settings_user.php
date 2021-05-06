@@ -31,9 +31,9 @@ if ($data == FALSE) {
         while ($row = $data->fetch_assoc()) {
             ?>
             <tr>
-                <td><?php echo ($row['admin'] == 1) ? $row['name'].' (Admin)' : $row['name']?></td>
+                <td><?php echo htmlspecialchars($row['name']); if($row['admin'] == 1) echo ' (Admin)';?></td>
                 <td>
-                    <input type="password" name="pw-<?php echo $row['id']?>" value="" autocomplete="new-password"/>
+                    <input type="password" name="pw-<?php echo htmlspecialchars($row['id'])?>" value="" autocomplete="new-password"/>
                 </td>
             </tr>
             <?php

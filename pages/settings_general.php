@@ -14,7 +14,7 @@ $logo = getOption($db, "logo");
         <li>
             <label class="field-split align-left" style="padding: 8px; width: auto;">Logo URL/Path</label>
             <input type="text" name="logo" class="field-style field-split align-right"
-                   value="<?php echo $logo;?>" />
+                   value="<?php echo htmlspecialchars($logo);?>" />
         </li>
         <li class="center" style="margin-top: 30px;">
             <input class="align-left" type="submit" value="Save">

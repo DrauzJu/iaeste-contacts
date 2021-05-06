@@ -40,7 +40,7 @@ $status = $db->query("SELECT * FROM status");
 
 <form class="editForm" action="../actions/save.php" method="post">
     <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrf_token'];?>"/>
-    <input type="hidden" name="id" value="<?php echo $data["id"]?>"/>
+    <input type="hidden" name="id" value="<?php echo htmlspecialchars($data["id"])?>"/>
     <input type="hidden" name="mode" value="<?php if(isset($_GET["id"])) {
             echo "update";
         } else {
@@ -49,15 +49,15 @@ $status = $db->query("SELECT * FROM status");
     <ul>
         <li>
             <input type="text" name="name" class="field-style field-split align-left" 
-                    placeholder="Name" value="<?php echo $data["name"]?>" />
+                    placeholder="Name" value="<?php echo htmlspecialchars($data["name"])?>" />
             <input type="text" name="email" class="field-style field-split align-right" 
-                    placeholder="Email" value="<?php echo $data["email"]?>" />
+                    placeholder="Email" value="<?php echo htmlspecialchars($data["email"])?>" />
         </li>
         <li>
             <input type="number" name="outYear" class="field-style field-split align-left" 
-                    placeholder="Outgoing Year" value="<?php echo $data["outYear"]?>" />
+                    placeholder="Outgoing Year" value="<?php echo htmlspecialchars($data["outYear"])?>" />
             <input type="text" name="studies" class="field-style field-split align-right" 
-                    placeholder="Studies" value="<?php echo $data["studies"]?>" />
+                    placeholder="Studies" value="<?php echo htmlspecialchars($data["studies"])?>" />
         </li>
         <li>
             <label class="field-split align-left">EP Status</label>
@@ -88,7 +88,7 @@ while ($row = $status->fetch_assoc()) {
             </select>
         </li>
         <li>
-            <textarea name="comment" class="field-style" placeholder="Comment"><?php echo $data["comment"]?></textarea>
+            <textarea name="comment" class="field-style" placeholder="Comment"><?php echo htmlspecialchars($data["comment"])?></textarea>
         </li>
         <li>
             <label class="field-split align-left">Disabled</label>
@@ -100,10 +100,13 @@ while ($row = $status->fetch_assoc()) {
             <?php if(isset($_GET["id"])) {?>
                 <input type="submit" style="margin-left: 5px" value="Delete" formaction="../actions/delete.php">
             <?php } ?>
-            <input type="submit" onclick="window.location='overview.php'; return false;" value="Cancel" class="align-right" />
+            <input type="submit" id="cancelButton" value="Cancel" class="align-right" />
         </li>
     </ul>
 </form>
+
+<script src="../js/jquery.slim.js"></script>
+<script src="../js/edit.js"></script>
 
 <?php 
 print_tail();

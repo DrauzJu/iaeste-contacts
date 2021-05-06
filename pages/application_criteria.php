@@ -13,7 +13,7 @@ print_head(array("../css/main.css", "../css/menu.css", "../css/table.css", "../c
 $db = getDB();
 
 $currentYear = (int) date("Y");
-$year = $_GET["year"] ?: $currentYear;
+$year = isset($_GET["year"]) ? $_GET["year"] : $currentYear;
 
 $stmt = $db->prepare("SELECT id, name, weight FROM criteria WHERE year=?");
 $stmt->bind_param("i", $year);
@@ -32,7 +32,7 @@ $res = $stmt->get_result();
 
 <form  class="center paramForm" method="get" action="application_criteria.php">
     <label class="field-style" style="margin-right: 0;">Year:
-        <select class="field-style" name="year" onchange="this.form.submit()">
+        <select id="year-select" class="field-style" name="year">
             <?php
             for($i=-2; $i<3; $i++) {
                 ?>
@@ -49,7 +49,7 @@ $res = $stmt->get_result();
 <form id="mainForm" action="../actions/saveCriteria.php" method="post"></form>
 
 <input form="mainForm" type="hidden" name="csrf" value="<?php echo $_SESSION['csrf_token'];?>"/>
-<input form="mainForm" type="hidden" name="year" value="<?php echo $year;?>"/>
+<input form="mainForm" type="hidden" name="year" value="<?php echo htmlspecialchars($year);?>"/>
 <table class="blueTable center">
     <thead>
     <tr>
@@ -63,13 +63,13 @@ $res = $stmt->get_result();
     while ($row = $res->fetch_assoc()) {
         ?>
         <tr>
-            <td><?php echo $row['name']?></td>
-            <td><?php echo $row['weight']?></td>
+            <td><?php echo htmlspecialchars($row['name'])?></td>
+            <td><?php echo htmlspecialchars($row['weight'])?></td>
             <td>
                 <form action="../actions/deleteCriterion.php" method="post" class="no-margin-end">
                     <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrf_token'];?>"/>
-                    <input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
-                    <input type="hidden" name="year" value="<?php echo $year;?>"/>
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']);?>"/>
+                    <input type="hidden" name="year" value="<?php echo htmlspecialchars($year);?>"/>
                     <input type="submit" value="Delete"/>
                 </form>
             </td>
@@ -97,6 +97,9 @@ $res = $stmt->get_result();
         <a href="application.php">Back</a>
     </div>
 </div>
+
+<script src="../js/jquery.slim.js"></script>
+<script src="../js/application.js"></script>
 
 <?php
 print_tail();

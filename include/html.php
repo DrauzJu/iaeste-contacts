@@ -19,6 +19,15 @@ function print_head($css_files, $title, $includesDatatable = FALSE) {
         DT;
     }
 
+    // Add CSP Headers
+    header("Content-Security-Policy: "
+        ."default-src 'self';"
+        ."img-src https: http:;"
+        ."font-src https://fonts.gstatic.com;"
+        ."script-src 'self' https://cdn.datatables.net;"
+        ."style-src 'self' 'unsafe-inline' https://cdn.datatables.net https://fonts.googleapis.com;"
+    );
+
     echo <<<EOF
     <html>
         <head>

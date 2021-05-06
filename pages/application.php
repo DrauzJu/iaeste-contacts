@@ -101,7 +101,7 @@ function getData() {
     </select>
 
     <label class="field-style">Examiner:
-        <input class="field-style" type="text" name="user" value="<?php if(isset($_GET["user"])) echo $_GET['user']; ?>">
+        <input class="field-style" type="text" name="user" value="<?php if(isset($_GET["user"])) echo htmlspecialchars($_GET['user']); ?>">
     </label>
 
     <input class="field-style" type="submit" value="Go">
@@ -114,8 +114,8 @@ if(isset($_GET["year"]) && isset($_GET["user"])) {
 
     <form class="center" method="post" action="../actions/saveScores.php">
         <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrf_token'];?>"/>
-        <input type="hidden" name="year" value="<?php echo $_GET["year"];?>"/>
-        <input type="hidden" name="user" value="<?php echo $_GET["user"];?>"/>
+        <input type="hidden" name="year" value="<?php echo htmlspecialchars($_GET["year"]);?>"/>
+        <input type="hidden" name="user" value="<?php echo htmlspecialchars($_GET["user"]);?>"/>
         <table class="blueTable">
             <thead>
             <tr>
@@ -123,7 +123,7 @@ if(isset($_GET["year"]) && isset($_GET["user"])) {
                 <?php
                 foreach ($criteria as $criterion) {
                 ?>
-                    <th><?php echo $criterion->getName(); ?></th>
+                    <th><?php echo htmlspecialchars($criterion->getName()); ?></th>
                 <?php
                 }
                 ?>
@@ -135,7 +135,7 @@ if(isset($_GET["year"]) && isset($_GET["user"])) {
             foreach(getData() as $id => $student) {
             ?>
                 <tr>
-                    <td><?php echo $student->getName()?></td>
+                    <td><?php echo htmlspecialchars($student->getName())?></td>
                     <?php
                     foreach ($criteria as $criterion) {
                         $criterionId = $criterion->getId();
@@ -148,8 +148,8 @@ if(isset($_GET["year"]) && isset($_GET["user"])) {
                         $value = $score ? $score->getValue(): "";
                     ?>
                         <td>
-                            <input type="number" name="<?php echo $name; ?>"
-                                   value="<?php echo $value; ?>">
+                            <input type="number" name="<?php echo htmlspecialchars($name); ?>"
+                                   value="<?php echo htmlspecialchars($value); ?>">
                         </td>
                     <?php
                     }
