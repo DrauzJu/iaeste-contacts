@@ -4,12 +4,12 @@ $(document).ready(function () {
         info: false,
         order: [[ 1, "desc" ], [ 5, "asc" ], [ 0, "asc" ]]
     });
-});
 
-function change_show_disabled_accounts(elem) {
-    if ($(elem).is(":checked")) {
-        window.location.href = "overview.php?showDisabled";
-    } else {
-        window.location.href = "overview.php";
-    }
-}
+    $('#checkDisabledAccounts').click((elem) => {
+        if ($(elem.target).is(":checked")) {
+            window.location.href = "overview.php?showDisabled";
+        } else {
+            window.location.href = "overview.php";
+        }
+    });
+});

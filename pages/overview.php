@@ -23,7 +23,7 @@ if ($data == FALSE) {
 <br>
 
 <div style="margin-bottom: 30px;">
-    <input type="checkbox" id="checkDisabledAccounts" name="scales" onclick="change_show_disabled_accounts(this)" <?php if(isset($_GET['showDisabled'])) { ?> checked <?php } ?>>
+    <input type="checkbox" id="checkDisabledAccounts" name="scales" <?php if(isset($_GET['showDisabled'])) { ?> checked <?php } ?>>
     <label for="checkDisabledAccounts">Show also disabled accounts</label>
 </div>
 
