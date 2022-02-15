@@ -170,17 +170,23 @@ if(isset($_GET["year"]) && isset($_GET["user"])) {
 ?>
 
 <div class="menu">
-    <div>
-        <a href="overview.php">Back to Home</a>
-    </div>
+    <a href="overview.php">
+        <div>
+            Back to Home
+        </div>
+    </a>
 
-    <div>
-        <a href="application_overview.php">Overview</a>
-    </div>
+    <a href="application_overview.php">
+        <div>
+            Overview
+        </div>
+    </a>
 
-    <div>
-        <a href="application_criteria.php">Set criteria</a>
-    </div>
+    <a href="application_criteria.php">
+        <div>
+            Set criteria
+        </div>
+    </a>
 </div>
 
 <?php

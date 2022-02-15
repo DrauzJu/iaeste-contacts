@@ -27,17 +27,23 @@ switch ($settings_tab) {
 ?>
 
 <div class="menu">
-    <div>
-        <a href="overview.php">Back to Home</a>
-    </div>
+    <a href="overview.php">
+        <div>
+            Back to Home
+        </div>
+    </a>
 
-    <div>
-        <a href="settings.php?tab=General">General</a>
-    </div>
+    <a href="settings.php?tab=General.php">
+        <div>
+            General
+        </div>
+    </a>
 
-    <div>
-        <a href="settings.php?tab=User">User</a>
-    </div>
+    <a href="settings.php?tab=User.php">
+        <div>
+            User
+        </div>
+    </a>
 </div>
 
 <?php

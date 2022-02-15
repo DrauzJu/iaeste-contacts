@@ -67,21 +67,26 @@ while ($row = $data->fetch_assoc()) {
 </table>
 
 <div class="menu">
-    <div>
-        <a href="edit.php">New student</a>
-    </div>
-
-    <div>
-        <a href="application.php">Application</a>
-    </div>
-
-    <div>
-        <a href="settings.php?tab=General">Settings</a>
-    </div>
-
-    <div>
-        <a href="../actions/logout.php">Logout</a>
-    </div>
+    <a href="edit.php">
+        <div>
+            New student
+        </div>
+    </a>
+    <a href="application.php">
+        <div>
+            Application
+        </div>
+    </a>
+    <a href="settings.php?tab=General">
+        <div>
+            Settings
+        </div>
+    </a>
+    <a href="../actions/logout.php">
+        <div>
+            Logout
+        </div>
+    </a>
 </div>
 
 <script src="../js/overview.js"></script>

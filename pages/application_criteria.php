@@ -93,9 +93,11 @@ $res = $stmt->get_result();
 <input  class="center" form="mainForm" type="submit" value="Save" style="display:block; margin-top: 10px"/>
 
 <div class="menu">
-    <div>
-        <a href="application.php">Back</a>
-    </div>
+    <a href="application.php">
+        <div>
+            Back
+        </div>
+    </a>
 </div>
 
 <script src="../js/jquery.slim.js"></script>

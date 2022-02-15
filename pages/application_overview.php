@@ -83,9 +83,11 @@ if(isset($res)) {
 ?>
 
 <div class="menu">
-    <div>
-        <a href="application.php">Back</a>
-    </div>
+    <a href="application.php">
+        <div>
+            Back
+        </div>
+    </a>
 </div>
 
 <script src="../js/jquery.slim.js"></script>
